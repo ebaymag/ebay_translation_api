@@ -45,6 +45,7 @@ class EbayTranslationAPI < Evil::Client
     errors.add :wrong_language, language: language, site: site
   end
 
+
   format "json"
   path   { "https://#{"sandbox." if sandbox}.cbttranslation.ebay.com.hk/" }
 
