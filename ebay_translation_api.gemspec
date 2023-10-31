@@ -1,9 +1,9 @@
 Gem::Specification.new do |gem|
-  gem.name     = "ebay_api"
+  gem.name     = "ebay_translation_api"
   gem.version  = "0.0.6"
-  gem.author   = "Andrew Kozin (nepalez)"
-  gem.email    = "andrew.kozin@gmail.com"
-  gem.homepage = "https://github.com/nepalez/sms_aero"
+  gem.author   = "Dean"
+  gem.email    = "974166167@qq.com"
+  gem.homepage = "https://github.com/YoungSpecial"
   gem.summary  = "HTTP(s) client to eBay Inventory API"
   gem.license  = "MIT"
 
