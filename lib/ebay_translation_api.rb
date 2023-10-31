@@ -62,7 +62,8 @@ class EbayTranslationAPI < Evil::Client
       "Accept-Charset":   charset,
       "User-Agent":       user_agent,
       "X-Ruby-Client":    "https://github.com/ebaymag/ebay_translation_api",
-      "X-Ruby-Framework": "https://github.com/evilmartians/evil-client"
+      "X-Ruby-Framework": "https://github.com/evilmartians/evil-client",
+      "Content-Type": "application/x-www-form-urlencoded"
     }.compact
   end
 
