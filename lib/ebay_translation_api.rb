@@ -28,9 +28,6 @@ class EbayTranslationAPI < Evil::Client
   end
 
   option :token
-  option :site,       Site,            optional: true
-  option :language,   Language,        optional: true
-  option :charset,    Charset,         default:  proc { "utf-8" }
   option :sandbox,    true.method(:&), default:  proc { false }
   option :gzip,       true.method(:&), default:  proc { false }
   option :user_agent, method(:String), optional: true
@@ -45,7 +42,7 @@ class EbayTranslationAPI < Evil::Client
   format "json"
   path   { "https://#{"sandbox." if sandbox}.cbttranslation.ebay.com.hk/" }
 
-  middleware { [LogRequest, JSONResponse] }
+  # middleware { [LogRequest, JSONResponse] }
 
   security do
     token_value = token.respond_to?(:call) ? token.call : token
@@ -75,7 +72,7 @@ class EbayTranslationAPI < Evil::Client
 
     case code
     when 1001
-      raise InvalidAccessToken.new(code: code), message
+      # raise InvalidAccessToken.new(code: code), message
     else
       raise Error.new(code: code, data: data), message
     end
@@ -87,7 +84,7 @@ class EbayTranslationAPI < Evil::Client
     error = data.dig("errors", 0) || {}
     code = error["errorId"]
     message = error["longMessage"] || error["message"]
-    raise RequestLimitExceeded.new(code: code), message
+    # raise RequestLimitExceeded.new(code: code), message
   end
 
   response(500) do |_, _, (data, *)|
@@ -95,6 +92,6 @@ class EbayTranslationAPI < Evil::Client
     code = data.dig("errors", 0, "errorId")
     message =
         data.dig("errors", 0, "longMessage") || data.dig("errors", 0, "message")
-    raise InternalServerError.new(code: code), message
+    # raise InternalServerError.new(code: code), message
   end
 end
