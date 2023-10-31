@@ -46,7 +46,7 @@ class EbayTranslationAPI < Evil::Client
   end
 
 
-  format "json"
+  format "x-www-form-urlencoded"
   path   { "https://#{"sandbox." if sandbox}cbttranslation.ebay.com.hk/translation/v1" }
 
   middleware { [LogRequest, JSONResponse] }
