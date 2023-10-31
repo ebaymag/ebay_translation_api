@@ -10,7 +10,7 @@ See more at https://developer.ebay.com/api-docs/static/oauth-tokens.html
 
 You may obtain OAuth tokens with, for example, [omniauth-ebay-oauth](https://github.com/evilmartians/omniauth-ebay-oauth) gem.
 
-For access token renewal, a special [`EbayAPI::TokenManager`](lib/ebay_api/token_manager.rb) class is included into this gem.
+For access token renewal, a special [`EbayAPI::TokenManager`](lib/ebay_translation_api/token_manager.rb) class is included into this gem.
 
  1. Instantiate it with access and refresh token information, that you have obtained on user sign in via OAuth (**not** Auth'n'Auth!) and your application's `appid` and `certid`.
 
