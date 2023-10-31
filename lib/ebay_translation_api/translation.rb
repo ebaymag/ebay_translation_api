@@ -5,6 +5,7 @@ class EbayTranslationAPI
       option :site, Site
       option :data, proc(&:to_h) # TODO: add model to validate input
 
+      format "form"
       path { "/translate_listing" }
       http_method :post
       body { data }
