@@ -21,11 +21,7 @@ class EbayTranslationAPI < Evil::Client
   GEM_ROOT = File.dirname(__dir__)
   DICTIONARY_FILE = File.join(GEM_ROOT, *%w[config dictionary.yml])
 
-  require_relative "ebay_api/versions"
-  require_relative "ebay_api/models"
-  require_relative "ebay_api/operations"
-  require_relative "ebay_api/middlewares"
-  require_relative "ebay_api/exceptions"
+  require_relative "ebay_translation_api/translation"
 
   class << self
     attr_accessor :logger
