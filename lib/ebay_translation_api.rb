@@ -21,7 +21,6 @@ class EbayTranslationAPI < Evil::Client
   GEM_ROOT = File.dirname(__dir__)
   DICTIONARY_FILE = File.join(GEM_ROOT, *%w[config dictionary.yml])
 
-  require_relative "ebay_translation_api/versions"
   require_relative "ebay_translation_api/models"
   require_relative "ebay_translation_api/middlewares"
   require_relative "ebay_translation_api/exceptions"
@@ -45,11 +44,10 @@ class EbayTranslationAPI < Evil::Client
     errors.add :wrong_language, language: language, site: site
   end
 
-
-  format "json"
+  format "form"
   path   { "https://#{"sandbox." if sandbox}cbttranslation.ebay.com.hk/translation/v1" }
 
-  middleware { [LogRequest, JSONResponse] }
+  middleware { [JSONResponse] }
 
   security do
     token_value = token.respond_to?(:call) ? token.call : token
@@ -62,7 +60,8 @@ class EbayTranslationAPI < Evil::Client
       "Accept-Charset":   charset,
       "User-Agent":       user_agent,
       "X-Ruby-Client":    "https://github.com/ebaymag/ebay_translation_api",
-      "X-Ruby-Framework": "https://github.com/evilmartians/evil-client"
+      "X-Ruby-Framework": "https://github.com/evilmartians/evil-client",
+      "Content-Type": "application/x-www-form-urlencoded"
     }.compact
   end
 
